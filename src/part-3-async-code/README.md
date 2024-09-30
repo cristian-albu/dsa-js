@@ -22,4 +22,6 @@ Key Concepts of Asynchronous Code
 
 ## Methodology and structure:
 
-1.
+1. Do the 6 exercises
+2. Use the async methods alongside some best async code best practices such as error handling, concurrency, parallelism, debouncing, throttling, fallbacks, cleanups, limits, etc.
+3. Where you can mock things that are not directly async related you should. If you can do it in the terminal.

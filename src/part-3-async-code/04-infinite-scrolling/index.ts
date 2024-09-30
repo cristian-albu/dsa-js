@@ -2,7 +2,8 @@
 
 Infinite Scrolling Functionality
 Overview
-Create a script that loads items from a local JSON file and implements infinite scrolling. As the user scrolls down, more items are loaded automatically without needing to click on a "Load More" button.
+Create a script that loads items from a local JSON file and implements infinite scrolling. 
+As the user scrolls down, more items are loaded automatically without needing to click on a "Load More" button.
 
 Key Features
 Load Initial Data: Fetch a fixed number of items from a local JSON file.
