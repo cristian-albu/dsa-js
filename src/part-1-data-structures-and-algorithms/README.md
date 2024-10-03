@@ -3,12 +3,10 @@
 ## Methodology and structure:
 
 1. Get the book "Data Structures and Algorithms with JavaScript" by Michael McMillan.
-2. Read one chapte at a time.
-3. During each chapter go to the `examples` directory of that chapter and recreate the examples and important notes in `index.ts`
-4. Go to the `exercises` directory and find between 5-20 exercises that are relevant to that chapter. Create a new directory for each with the name of the exercise.
-5. Create a file `index.ts` and a test file `index.test.ts` in each exercise directory.
-6. Write a test suite for the exercises.
-7. Solve each exercise.
+2. Read one chapter at a time.
+3. Create a branch and copy the exercises into a new directory with your name
+4. Solve all of the exercises.
+5. If there are no tests you should write them.
 
 Notes: Each exercise should be attempted for at least 20-30 minutes before looking at the chapter examples. Only after another 20-30 minutes of struggle you should look for outside help (stackoverflow, friends?, chatgpt, etc...)
 
