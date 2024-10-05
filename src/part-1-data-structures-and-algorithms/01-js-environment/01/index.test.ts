@@ -83,7 +83,7 @@ describe("Elemental Algorithms", () => {
   });
 
   test("fibonacci should return the first n Fibonacci numbers", () => {
-    expect(fibonacci(5)).toEqual("12345");
+    expect(fibonacci(5)).toEqual("01123");
     expect(fibonacci(0)).toEqual("");
   });
 

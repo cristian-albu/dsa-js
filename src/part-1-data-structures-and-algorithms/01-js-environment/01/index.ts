@@ -94,49 +94,116 @@ export function findGCD(a: number, b: number): number {
 // Find the Least Common Multiple (LCM)
 export function findLCM(a: number, b: number): number {
   // Use the formula involving GCD or iterative checking for multiples
+  function useGCD(a: number, b: number): number {
+    let first = a;
+  let second = b;
+    while (second !== 0) {
+      let temp = second;     
+      second = first % second;
+      first = temp;
+    }
+  return first;
+  }
 
-  return 0;
+  let aNumber = a;
+  let bNumber = b;
+  let gcd = useGCD(a,b);
+  return (aNumber * bNumber) / gcd ;
 }
 
 // Sum of Digits of a Number
 export function sumOfDigits(num: number): number {
   // Sum the digits of a number using modulus and division
+  let number = num;
+  
+  function calculate(num: number): number {
+    let sum = 0;
+    while (number > 0) {
+      let remainder = number % 10;
+      number = number / 10;      
+      sum += remainder;          
+    }
+    return sum;
+  }
+  let result = Math.floor(calculate(num));
 
-  return 0;
+  return result;
 }
 
 // Count the Digits in a Number
 export function countDigits(num: number): number {
   // Count the number of digits by dividing the number repeatedly until 0
-
-  return 0;
+    let counter = 0;
+    let number = num;
+    if (number == 0) return 1;
+    while (number > 0) {
+      number = Math.floor(number / 10);
+      counter++;
+    }
+  return counter;
 }
 
 // Check if a Number is a Palindrome
 export function isPalindrome(num: number): boolean {
   // Reverse the number and compare it with the original
-
-  return false;
+  let reversed = 0;
+  let number = num;
+  while (number > 0) {
+   let digit = number % 10;
+   reversed = reversed * 10 + digit;
+   number = Math.floor(number / 10);
+  }
+  if (num === reversed) {return true} else {return false};
+  
 }
 
 // Check if a Number is an Armstrong Number
 export function isArmstrong(num: number): boolean {
   // Calculate the sum of cubes of digits and compare it with the original number
+  let number = num;
+  let secondPass = num;
+  let counter = 0;
+  while (number > 0) {
+    number = Math.floor(number / 10);
+    counter++;    
+  }
+  let result = 0;
+  while (secondPass > 0) {
+    let digit = secondPass % 10;
+    secondPass = Math.floor(secondPass / 10);
+    let digitPowered = Math.pow(digit, counter);
+    result += digitPowered;
+  }
 
-  return false;
+  if(num == result) {return true} else {return false};
 }
 
 // Generate Fibonacci Sequence (N terms)
 // you will use a string to output it for now cause you can't use arrays yet. Watch out for type conversions
 export function fibonacci(n: number): string {
   // Generate Fibonacci numbers iteratively by summing the last two terms
-
-  return "";
+let first = 0;
+let second = 1;
+let sum = 0;
+let result = ``;
+for (let i = 0; i < n; i++) {
+result += `${first}`;
+sum = first + second;
+first = second;
+second = sum;
+}
+  return result;
 }
 
 // Power of a Number (X^N)
 export function powerOfNumber(x: number, n: number): number {
   // Calculate the power of a number using repeated multiplication in a loop
-
-  return 0;
+    let number = x;
+    let power = n;
+    let result = number;
+    if (power == 0) return 1;
+    for (let i = 1; i < power; i++) {
+      result *= number;
+    }
+  return result;
 }
