@@ -25,6 +25,10 @@ describe("round 3", () => {
       expect(isPerfectNumber(28)).toBe(true);
     });
 
+    test("should return true for perfect number 8128", () => {
+      expect(isPerfectNumber(8128)).toBe(true);
+    });
+
     test("should return false for number 0", () => {
       expect(isPerfectNumber(0)).toBe(false);
     });
