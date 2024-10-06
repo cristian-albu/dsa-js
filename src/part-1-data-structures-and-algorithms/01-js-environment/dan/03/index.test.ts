@@ -2,8 +2,6 @@ import {
   isPerfectNumber,
   findMaxDistanceFromOrigin,
   calculateMedian,
-  lengthOfLongestSubstring,
-  lengthOfLongestIncreasingSubsequence,
 } from ".";
 
 // Test for checking if a number is a perfect number
@@ -72,41 +70,4 @@ describe("round 3", () => {
     });
   });
 
-  // Test for length of longest substring without repeating characters
-  describe("lengthOfLongestSubstring", () => {
-    test('should return 3 for string "abcabcbb"', () => {
-      expect(lengthOfLongestSubstring("abcabcbb")).toBe(3);
-    });
-
-    test('should return 1 for string "bbbbb"', () => {
-      expect(lengthOfLongestSubstring("bbbbb")).toBe(1);
-    });
-
-    test("should return 0 for empty string", () => {
-      expect(lengthOfLongestSubstring("")).toBe(0);
-    });
-
-    test('should return 3 for string "pwwkew"', () => {
-      expect(lengthOfLongestSubstring("pwwkew")).toBe(3);
-    });
-  });
-
-  // Test for length of longest increasing subsequence
-  describe("lengthOfLongestIncreasingSubsequence", () => {
-    test("should return 5 for start = 1 and end = 10", () => {
-      expect(lengthOfLongestIncreasingSubsequence(1, 10)).toBe(10);
-    });
-
-    test("should return 2 for start = 3 and end = 5", () => {
-      expect(lengthOfLongestIncreasingSubsequence(3, 5)).toBe(3);
-    });
-
-    test("should return 0 for start = 0 and end = 0", () => {
-      expect(lengthOfLongestIncreasingSubsequence(0, 0)).toBe(0);
-    });
-
-    test("should return 3 for start = 2 and end = 6", () => {
-      expect(lengthOfLongestIncreasingSubsequence(2, 6)).toBe(4);
-    });
-  });
 });
