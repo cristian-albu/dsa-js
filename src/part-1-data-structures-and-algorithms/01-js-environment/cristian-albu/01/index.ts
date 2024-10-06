@@ -119,12 +119,12 @@ export function findLCM(a: number, b: number): number {
 // Sum of Digits of a Number
 export function sumOfDigits(num: number): number {
   // Sum the digits of a number using modulus and division
+  let n = num;
 
-  let number = num;
   let sum = 0;
-  while (number > 0) {
-    let digit = number % 10;
-    number = Math.floor(number / 10);
+  while (n > 0) {
+    let digit = n % 10;
+    n = Math.floor(n / 10);
     sum += digit;
   }
 
