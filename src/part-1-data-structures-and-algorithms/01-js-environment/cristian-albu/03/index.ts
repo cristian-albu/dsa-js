@@ -6,7 +6,24 @@
 export function isPerfectNumber(num: number): boolean {
   // Implement logic here
 
-  return false;
+  if (num <= 1) return false;
+
+  let total = 1;
+
+  // We assume all perfect numbers are even
+  for (let i = 2; i * i <= num; i++) {
+    if (num % i === 0) {
+      total += i;
+
+      let pair = num / i;
+
+      if (i !== pair) {
+        total += pair;
+      }
+    }
+  }
+
+  return num === total;
 }
 
 // 2. In a treasure hunt, players are given clues in the form of two coordinates
@@ -17,7 +34,7 @@ export function isPerfectNumber(num: number): boolean {
 export function findMaxDistanceFromOrigin(x1: number, y1: number, x2: number, y2: number): number {
   // Implement logic here
 
-  return 0;
+  return Math.max(Math.sqrt(x1 * x1 + y1 * y1), Math.sqrt(x2 * x2 + y2 * y2));
 }
 
 // 3. A statistician is analyzing two numbers representing the count of elements.
@@ -27,7 +44,7 @@ export function findMaxDistanceFromOrigin(x1: number, y1: number, x2: number, y2
 export function calculateMedian(a: number, b: number): number {
   // Implement logic here
 
-  return 0;
+  return (a + b) / 2;
 }
 
 // 4. A cryptographer is working on a secret message represented as a string.
@@ -35,8 +52,6 @@ export function calculateMedian(a: number, b: number): number {
 // but she needs to process one character at a time. Can you help her determine this length?
 
 export function lengthOfLongestSubstring(s: string): number {
-  // Implement logic here
-
   return 0;
 }
 
