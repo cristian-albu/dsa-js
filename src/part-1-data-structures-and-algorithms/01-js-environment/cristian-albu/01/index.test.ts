@@ -14,6 +14,7 @@ import {
   isArmstrong,
   fibonacci,
   powerOfNumber,
+  findPrimeFactorizationSum,
 } from ".";
 
 describe("Elemental Algorithms", () => {
@@ -59,11 +60,18 @@ describe("Elemental Algorithms", () => {
   });
 
   test("findGCD should return the greatest common divisor of two numbers", () => {
-    expect(findGCD(54, 24)).toBe(6);
+    expect(findGCD(106, 16)).toBe(2);
     expect(findGCD(10, 5)).toBe(5);
+    expect(findGCD(54, 24)).toBe(6);
+  });
+
+  test("findPrimeFactorizationSum should return the sum of the prime factors of a number", () => {
+    expect(findPrimeFactorizationSum(4)).toBe(4);
+    expect(findPrimeFactorizationSum(144)).toBe(14);
   });
 
   test("findLCM should return the least common multiple of two numbers", () => {
+    expect(findLCM(12, 80)).toBe(240);
     expect(findLCM(4, 5)).toBe(20);
     expect(findLCM(0, 10)).toBe(0);
   });

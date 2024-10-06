@@ -2,36 +2,32 @@
 export function findMaxOfTwo(a: number, b: number): number {
   // Compare two numbers and return the larger one
 
-  if (a > b) return a;
-
-  return b;
+  return a > b ? a : b;
 }
 
 // Finding the Minimum of Two Numbers
 export function findMinOfTwo(a: number, b: number): number {
   // Compare two numbers and return the smaller one
-  if (a < b) return a;
 
-  return b;
+  return a < b ? a : b;
 }
 
 // Check if a Number is Even or Odd
 export function isEvenOrOdd(num: number): string {
   // Check if the number is divisible by 2 and return 'even' or 'odd'
-  if (num % 2 === 0) return "even";
 
-  return "odd";
+  return num % 2 === 0 ? "even" : "odd";
 }
 
 // Sum of N Natural Numbers
 export function sumOfNNumbers(n: number): number {
   // Add numbers from 1 to n using a loop
 
-  let num = 0;
+  let sum = 0;
 
-  for (let i = 1; i <= n; i++) num += i;
+  for (let i = 1; i <= n; i++) sum += i;
 
-  return num;
+  return sum;
 }
 
 // Factorial of a Number
@@ -67,7 +63,9 @@ export function isPrime(num: number): boolean {
   if (num === 2) return true;
   if (num % 2 === 0) return false;
 
-  for (let i = 3; i <= Math.sqrt(num); i += 2) if (num % i === 0) return false;
+  for (let i = 3; i <= Math.sqrt(num); i += 2) {
+    if (num % i === 0) return false;
+  }
 
   return true;
 }
@@ -76,14 +74,46 @@ export function isPrime(num: number): boolean {
 export function findGCD(a: number, b: number): number {
   // Use the Euclidean algorithm (modulus and loop) to find the GCD
 
-  return 0;
+  let first = a;
+  let second = b;
+
+  while (second !== 0) {
+    let remainder = first % second;
+    first = second;
+    second = remainder;
+  }
+
+  return first;
+}
+
+export function findPrimeFactorizationSum(num: number): number {
+  let sum = 0;
+  let theNum = num;
+
+  while (theNum % 2 === 0) {
+    sum += 2;
+    theNum /= 2;
+  }
+
+  for (let i = 3; i <= Math.sqrt(theNum); i += 2) {
+    while (theNum % i === 0) {
+      sum += i;
+      theNum /= i;
+    }
+  }
+
+  if (theNum > 2) {
+    sum += theNum;
+  }
+
+  return sum;
 }
 
 // Find the Least Common Multiple (LCM)
 export function findLCM(a: number, b: number): number {
   // Use the formula involving GCD or iterative checking for multiples
 
-  return 0;
+  return (a * b) / findGCD(a, b);
 }
 
 // Sum of Digits of a Number
