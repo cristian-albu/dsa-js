@@ -30,11 +30,11 @@ describe("second round", () => {
   // Test for finding the GCD of the sum of digits
   describe("findGCDOfDigitSums", () => {
     test("should return 1 for numbers 48 and 36", () => {
-      expect(findGCDOfDigitSums(48, 36)).toBe(1);
+      expect(findGCDOfDigitSums(48, 36)).toBe(3);
     });
 
     test("should return 2 for numbers 12 and 8", () => {
-      expect(findGCDOfDigitSums(12, 8)).toBe(2);
+      expect(findGCDOfDigitSums(12, 8)).toBe(1);
     });
 
     test("should return 0 for numbers with a digit sum of 0", () => {
@@ -44,7 +44,7 @@ describe("second round", () => {
 
   // Test for calculating arrangements for ingredients
   describe("calculateArrangementsForIngredients", () => {
-    test("should return 120 for ingredients 5 and 4", () => {
+    test("should return 362880 for ingredients 5 and 4", () => {
       expect(calculateArrangementsForIngredients(5, 4)).toBe(362880); // 9! = 362880
     });
 
@@ -59,12 +59,16 @@ describe("second round", () => {
 
   // Test for generating Fibonacci and reversing (just one number returned)
   describe("generateFibonacciAndReverse", () => {
-    test("should return 5 for Fibonacci at position 5", () => {
-      expect(generateFibonacciAndReverse(5)).toBe(5);
+    test("should return '5 3 2 1 1 0' for Fibonacci sequence up to position 5 in reverse", () => {
+      expect(generateFibonacciAndReverse(5)).toBe("5 3 2 1 1 0");
     });
 
-    test("should return 1 for Fibonacci at position 1", () => {
-      expect(generateFibonacciAndReverse(1)).toBe(1);
+    test("should return '1 0' for Fibonacci sequence up to position 1 in reverse", () => {
+      expect(generateFibonacciAndReverse(1)).toBe("1 0");
+    });
+
+    test("should return '0' for Fibonacci sequence up to position 0", () => {
+      expect(generateFibonacciAndReverse(0)).toBe("0");
     });
   });
 

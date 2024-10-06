@@ -2,20 +2,69 @@
 // He wants to find the sum of the first N prime numbers to understand their distribution better.
 // Help him calculate this sum for any given N.
 
+function unsafeIsPrime(n: number): boolean {
+  let result = true;
+
+  for (let i = 3; i * i <= n; i += 2) {
+    if (n % i === 0) return (result = false);
+  }
+
+  return result;
+}
+
 export function calculateSumOfFirstNPrimes(n: number): number {
   // Implement logic here
 
-  return 0;
+  if (n === 0) return 0;
+  if (n === 1) return 2;
+
+  let sum = 2;
+  let i = 3;
+  let count = 1;
+
+  while (count < n) {
+    if (unsafeIsPrime(i)) {
+      sum += i;
+      count++;
+    }
+    i += 2;
+  }
+
+  return sum;
 }
 
 // 2. Two friends, Alice and Bob, are playing a game where they compare numbers.
 // Each of them has a number, and they want to determine the greatest common divisor
 // of the sum of the digits of their respective numbers. Help them figure this out!
 
+function findSumOfDigits(num: number): number {
+  let n = num;
+  let sum = 0;
+
+  while (n > 0) {
+    const digit = n % 10;
+    n = Math.floor(n / 10);
+    sum += digit;
+  }
+
+  return sum;
+}
+
 export function findGCDOfDigitSums(a: number, b: number): number {
   // Implement logic here
 
-  return 0;
+  if (a === 0 && b === 0) return 0;
+
+  let sumA = findSumOfDigits(a);
+  let sumB = findSumOfDigits(b);
+
+  while (sumB !== 0) {
+    const remainder = sumA % sumB;
+    sumA = sumB;
+    sumB = remainder;
+  }
+
+  return sumA;
 }
 
 // 3. During a festive season, a baker decides to make a special cake for a party.
@@ -26,17 +75,45 @@ export function findGCDOfDigitSums(a: number, b: number): number {
 export function calculateArrangementsForIngredients(a: number, b: number): number {
   // Implement logic here
 
-  return 0;
+  let sum = 1;
+
+  for (let i = 1; i <= a + b; i++) {
+    sum *= i;
+  }
+
+  return sum;
 }
 
 // 4. A group of students is studying the Fibonacci sequence for their math project.
 // They need to create the sequence up to the Nth term, but they also want to present
 // it in reverse order for added creativity. Can you assist them in reversing the sequence?
 
-export function generateFibonacciAndReverse(n: number): number {
+export function generateFibonacciAndReverse(n: number): string {
   // Implement logic here
 
-  return 0;
+  let sequenceString = "0 1 1";
+
+  if (n === 0) return "0";
+  if (n === 1) return "1 0";
+  if (n === 2) return "1 1 0";
+
+  let prev1 = 1;
+  let prev2 = 1;
+
+  for (let i = 2; i < n; i++) {
+    const current = prev1 + prev2;
+    prev1 = prev2;
+    prev2 = current;
+    sequenceString += ` ${current}`;
+  }
+
+  let reversedSequence = "";
+
+  for (let i = sequenceString.length - 1; i >= 0; i--) {
+    reversedSequence += sequenceString[i];
+  }
+
+  return reversedSequence;
 }
 
 // 5. In a quirky competition, two contestants are required to multiply their scores
@@ -46,7 +123,15 @@ export function generateFibonacciAndReverse(n: number): number {
 export function checkIfProductIsPalindrome(a: number, b: number): boolean {
   // Implement logic here
 
-  return false;
+  let product = a * b;
+  let inversedProduct = 0;
+
+  while (product > 0) {
+    let digit = product % 10;
+    product = Math.floor(product / 10);
+    inversedProduct = inversedProduct * 10 + digit;
+  }
+  return a * b === inversedProduct;
 }
 
 // 6. A librarian is tasked with organizing a special collection of books.
