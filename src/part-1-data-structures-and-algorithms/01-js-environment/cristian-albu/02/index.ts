@@ -138,54 +138,145 @@ export function checkIfProductIsPalindrome(a: number, b: number): boolean {
 // To ensure everything is in order, she wants to find the least common multiple
 // of the pages in the first N books in her collection. Help her compute this LCM.
 
+function pairWiseLCM(a: number, b: number) {
+  if (a === 0 || b === 0) return 0;
+  if (a === 1) return 1;
+  if (b === 1) return 1;
+
+  let aNum = a;
+  let bNum = b;
+
+  let result = 1;
+
+  for (let i = 2; i * i <= Math.max(aNum, bNum); i++) {
+    let aCurrCounter = 0;
+    let bCurrCounter = 0;
+
+    if (aNum % i === 0 || bNum % i === 0) {
+      if (aNum > 0) {
+        while (aNum % i === 0) {
+          aCurrCounter += 1;
+          aNum = Math.floor(aNum / i);
+        }
+      }
+
+      if (bNum > 0) {
+        while (bNum % i === 0) {
+          bCurrCounter += 1;
+          bNum = Math.floor(bNum / i);
+        }
+      }
+    }
+
+    const highCurrCounter = Math.max(aCurrCounter, bCurrCounter);
+
+    if (highCurrCounter > 0) {
+      result *= Math.pow(i, highCurrCounter);
+    }
+  }
+
+  if (aNum > 1) {
+    result *= aNum;
+  }
+  if (bNum > 1) {
+    result *= bNum;
+  }
+
+  return result;
+}
+
 export function calculateLCMOfBookPages(n: number): number {
   // Implement logic here
 
-  return 0;
+  if (n <= 2) return n;
+
+  let accum = 2;
+
+  for (let i = 3; i <= n; i++) {
+    accum = pairWiseLCM(accum, i);
+  }
+
+  return accum;
 }
 
-// 7. During a friendly challenge, a group of friends decides to see if the sum of the
-// squares of the digits of a number results in an Armstrong number.
-// Can you help them figure out if it’s true?
-
-export function isSumOfSquaresAnArmstrongNumber(num: number): boolean {
-  // Implement logic here
-
-  return false;
-}
-
-// 8. A teacher wants to assess the digit skills of her students.
+// 7. A teacher wants to assess the digit skills of her students.
 // She decides to take a number and count how many of its digits are even
 // and how many are odd. Can you help her with this task?
+
+function countDigits(num: number, even: boolean) {
+  let count = 0;
+  let n = num;
+  while (n > 0) {
+    let digit = n % 10;
+    n = Math.floor(n / 10);
+    if (even ? digit % 2 === 0 : digit % 2 !== 0) count++;
+  }
+
+  return count;
+}
 
 export function countEvenDigits(num: number): number {
   // Implement logic here
 
-  return 0;
+  return countDigits(num, true);
 }
 
 export function countOddDigits(num: number): number {
   // Implement logic here
 
-  return 0;
+  return countDigits(num, false);
 }
 
-// 9. A math enthusiast is fascinated by odd numbers.
+// 8. A math enthusiast is fascinated by odd numbers.
 // He wants to find the factorial of the sum of the first N odd numbers
 // to explore their unique properties. Can you assist him in calculating this factorial?
 
-export function calculateFactorialOfOddNumbersSum(n: number): number {
+export function calculateFactorialOfOddNumbersSum(n: number): BigInt {
   // Implement logic here
+  let sum = 0;
 
-  return 0;
+  for (let i = 1, count = 1; count <= n; i += 2, count++) sum += i;
+
+  let factorial = BigInt(1);
+
+  for (let i = 1; i <= sum; i++) factorial = BigInt(factorial * BigInt(i));
+
+  return factorial;
 }
 
-// 10. An aspiring coder is learning about Fibonacci numbers and their properties.
+// 9. An aspiring coder is learning about Fibonacci numbers and their properties.
 // He is curious to find out how many numbers in the Fibonacci sequence are also prime.
 // Can you help him identify this count up to the Nth term?
 
 export function countPrimeFibonacciNumbers(n: number): number {
   // Implement logic here
 
-  return 0;
+  if (n < 2) return 0;
+  if (n === 2) return 1;
+
+  let primesCount = 1;
+
+  let prev1 = 1;
+  let prev2 = 1;
+
+  for (let i = 3; i < n; i++) {
+    let curr = prev1 + prev2;
+    prev1 = prev2;
+    prev2 = curr;
+
+    if (curr % 2 !== 0) {
+      let isPrime = true;
+
+      for (let j = 3; j * j <= curr; j += 2) {
+        if (curr % j === 0) {
+          isPrime = false;
+          break;
+        }
+      }
+
+      if (isPrime) primesCount++;
+    }
+  }
+
+  return primesCount;
 }
