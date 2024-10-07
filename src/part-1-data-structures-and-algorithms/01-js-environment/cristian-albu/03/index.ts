@@ -46,22 +46,3 @@ export function calculateMedian(a: number, b: number): number {
 
   return (a + b) / 2;
 }
-
-// 4. A cryptographer is working on a secret message represented as a string.
-// She wants to find the length of the longest substring without repeating characters,
-// but she needs to process one character at a time. Can you help her determine this length?
-
-export function lengthOfLongestSubstring(s: string): number {
-  return 0;
-}
-
-// 5. A computer scientist is studying a specific pattern in two numbers
-// representing values in a sequence. She wants to determine the longest increasing
-// sequence of numbers between the two values, one being the start and the other the end.
-// Can you help her find the length of this increasing sequence?
-
-export function lengthOfLongestIncreasingSubsequence(start: number, end: number): number {
-  // Implement logic here
-
-  return 0;
-}

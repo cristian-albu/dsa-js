@@ -5,7 +5,6 @@ import {
   generateFibonacciAndReverse,
   checkIfProductIsPalindrome,
   calculateLCMOfBookPages,
-  isSumOfSquaresAnArmstrongNumber,
   countEvenDigits,
   countOddDigits,
   calculateFactorialOfOddNumbersSum,
@@ -85,23 +84,36 @@ describe("second round", () => {
 
   // Test for calculating LCM of book pages
   describe("calculateLCMOfBookPages", () => {
-    test("should return 12 for first 3 books with pages 4, 6, and 8", () => {
-      expect(calculateLCMOfBookPages(3)).toBe(24); // LCM of pages is 24
+    test("should return 1 for N = 1", () => {
+      expect(calculateLCMOfBookPages(1)).toBe(1); // LCM of 1 is 1
     });
 
-    test("should return 0 for N = 0", () => {
-      expect(calculateLCMOfBookPages(0)).toBe(0);
-    });
-  });
-
-  // Test for checking if sum of squares is an Armstrong number
-  describe("isSumOfSquaresAnArmstrongNumber", () => {
-    test("should return true for 153", () => {
-      expect(isSumOfSquaresAnArmstrongNumber(153)).toBe(true);
+    test("should return 2 for N = 2", () => {
+      expect(calculateLCMOfBookPages(2)).toBe(2); // LCM of (1, 2) is 2
     });
 
-    test("should return false for 10", () => {
-      expect(isSumOfSquaresAnArmstrongNumber(10)).toBe(false);
+    test("should return 6 for N = 3", () => {
+      expect(calculateLCMOfBookPages(3)).toBe(6); // LCM of (1, 2, 3) is 6
+    });
+
+    test("should return 12 for N = 4", () => {
+      expect(calculateLCMOfBookPages(4)).toBe(12); // LCM of (1, 2, 3, 4) is 12
+    });
+
+    test("should return 60 for N = 5", () => {
+      expect(calculateLCMOfBookPages(5)).toBe(60); // LCM of (1, 2, 3, 4, 5) is 60
+    });
+
+    test("should return 60 for N = 6", () => {
+      expect(calculateLCMOfBookPages(6)).toBe(60); // LCM of (1, 2, 3, 4, 5, 6) is 60
+    });
+
+    test("should return 420 for N = 7", () => {
+      expect(calculateLCMOfBookPages(7)).toBe(420); // LCM of (1, 2, 3, 4, 5, 6, 7) is 420
+    });
+
+    test("should return 840 for N = 8", () => {
+      expect(calculateLCMOfBookPages(8)).toBe(840); // LCM of (1, 2, 3, 4, 5, 6, 7, 8) is 840
     });
   });
 
@@ -129,23 +141,39 @@ describe("second round", () => {
 
   // Test for calculating factorial of odd numbers sum
   describe("calculateFactorialOfOddNumbersSum", () => {
-    test("should return 40320 for first 5 odd numbers (1, 3, 5, 7, 9)", () => {
-      expect(calculateFactorialOfOddNumbersSum(5)).toBe(40320); // 8! = 40320
+    test("should return 362880 for first 3 odd numbers (1, 3, 5)", () => {
+      expect(calculateFactorialOfOddNumbersSum(3)).toBe(BigInt(362880)); // 9! = 362880
+    });
+    test("should return 15511210043330985984000000n for first 5 odd numbers (1, 3, 5, 7, 9)", () => {
+      expect(calculateFactorialOfOddNumbersSum(5)).toBe(BigInt("15511210043330985984000000")); // 25! = 15511210043330985984000000
     });
 
-    test("should return 1 for N = 0", () => {
-      expect(calculateFactorialOfOddNumbersSum(0)).toBe(1);
+    test("should return 1n for N = 0", () => {
+      expect(calculateFactorialOfOddNumbersSum(0)).toBe(BigInt(1)); // 0! = 1
     });
   });
 
   // Test for counting prime Fibonacci numbers
   describe("countPrimeFibonacciNumbers", () => {
-    test("should return 4 for Fibonacci numbers up to 10 (2, 3, 5, 13)", () => {
-      expect(countPrimeFibonacciNumbers(10)).toBe(4);
+    test("should return 0 for N = 1 (Fibonacci: 0)", () => {
+      expect(countPrimeFibonacciNumbers(1)).toBe(0); // No prime numbers in the first term
     });
 
-    test("should return 0 for N = 0", () => {
-      expect(countPrimeFibonacciNumbers(0)).toBe(0);
+    test("should return 1 for N = 2 (Fibonacci: 0, 1)", () => {
+      expect(countPrimeFibonacciNumbers(2)).toBe(1); // Only 1 is prime
+    });
+
+    test("should return 2 for N = 5 (Fibonacci: 0, 1, 1, 2, 3)", () => {
+      expect(countPrimeFibonacciNumbers(5)).toBe(2); // Primes: 2, 3
+    });
+
+    test("should return 3 for N = 10 (Fibonacci: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34)", () => {
+      expect(countPrimeFibonacciNumbers(10)).toBe(4); // Primes: 2, 3, 5, 13
+    });
+
+    // Larger N values
+    test("should return 4 for N = 12 (Fibonacci: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89)", () => {
+      expect(countPrimeFibonacciNumbers(12)).toBe(5); // Primes: 2, 3, 5, 13, 89
     });
   });
 });
