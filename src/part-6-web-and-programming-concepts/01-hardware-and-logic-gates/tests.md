@@ -1,16 +1,4 @@
-import {
-  fullAdder,
-  multiplexer,
-  demultiplexer,
-  binaryAdder,
-  binaryToDecimal,
-  multiplexer4to1,
-  binaryComparator,
-  shiftRegister,
-  parityBitGenerator,
-  binaryMultiplier,
-} from ".";
-
+```ts
 describe("Full Adder", () => {
   it("should correctly compute sum and carry out", () => {
     expect(fullAdder(0b0, 0b0, 0b0)).toEqual({ sum: 0b0, carryOut: 0b0 });
@@ -81,3 +69,4 @@ describe("8-Bit Binary Multiplier", () => {
     expect(binaryMultiplier(0b1111, 0b1111)).toBe(0b11100001);
   });
 });
+```
