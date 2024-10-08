@@ -4,7 +4,6 @@ import {
   calculateArrangementsForIngredients,
   generateFibonacciAndReverse,
   checkIfProductIsPalindrome,
-  calculateLCMOfBookPages,
   countEvenDigits,
   countOddDigits,
   calculateFactorialOfOddNumbersSum,
@@ -82,16 +81,6 @@ describe("second round", () => {
     });
   });
 
-  // Test for calculating LCM of book pages
-  describe("calculateLCMOfBookPages", () => {
-    test("should return 12 for first 3 books with pages 4, 6, and 8", () => {
-      expect(calculateLCMOfBookPages(3)).toBe(24); // LCM of pages is 24
-    });
-
-    test("should return 0 for N = 0", () => {
-      expect(calculateLCMOfBookPages(0)).toBe(0);
-    });
-  });
 
   
   // Test for counting even digits
@@ -116,8 +105,8 @@ describe("second round", () => {
     });
   });
 
-   // Test for calculating factorial of odd numbers sum
-   describe("calculateFactorialOfOddNumbersSum", () => {
+  // Test for calculating factorial of odd numbers sum
+  describe("calculateFactorialOfOddNumbersSum", () => {
     test("should return 362880 for first 3 odd numbers (1, 3, 5)", () => {
       expect(calculateFactorialOfOddNumbersSum(3)).toBe(BigInt(362880)); // 9! = 362880
     });

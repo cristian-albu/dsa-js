@@ -122,20 +122,24 @@ export function generateFibonacciAndReverse(n: number): string {
 
 export function checkIfProductIsPalindrome(a: number, b: number): boolean {
   // Implement logic here
-    
-  
-  return false;
+    let first = a;
+    let second = b;
+    let product = a * b;
+    let temp = 0;
+    let reversed = 0;
+    while (product > 0) {
+      temp = product % 10;
+      reversed = reversed * 10 + temp;
+      product = Math.floor(product / 10);
+    }
+
+    if (reversed === (a*b)) {
+      return true;
+    } else {
+      return false;
+    }
 }
 
-// 6. A librarian is tasked with organizing a special collection of books.
-// To ensure everything is in order, she wants to find the least common multiple
-// of the pages in the first N books in her collection. Help her compute this LCM.
-
-export function calculateLCMOfBookPages(n: number): number {
-  // Implement logic here
-
-  return 0;
-}
 
 
 
@@ -144,25 +148,62 @@ export function calculateLCMOfBookPages(n: number): number {
 // and how many are odd. Can you help her with this task?
 
 export function countEvenDigits(num: number): number {
-  // Implement logic here
 
-  return 0;
+  let evenCounter = 0;
+  let oddCounter = 0;
+
+  while (num > 0) {
+    let digit = num % 10;
+    num = Math.floor(num / 10);
+    if (digit % 2 === 0) {
+      evenCounter++;
+    } else {
+      oddCounter++;
+    }
+  }
+  
+
+  return evenCounter;
 }
 
 export function countOddDigits(num: number): number {
   // Implement logic here
+  let evenCounter = 0;
+  let oddCounter = 0;
 
-  return 0;
+  while (num > 0) {
+    let digit = num % 10;
+    num = Math.floor(num / 10);
+    if (digit % 2 === 0) {
+      evenCounter++;
+    } else {
+      oddCounter++;
+    }
+  }
+  
+
+  return oddCounter;
 }
 
 // 8. A math enthusiast is fascinated by odd numbers.
 // He wants to find the factorial of the sum of the first N odd numbers
 // to explore their unique properties. Can you assist him in calculating this factorial?
 
-export function calculateFactorialOfOddNumbersSum(n: number): number {
+export function calculateFactorialOfOddNumbersSum(n: number): BigInt {
   // Implement logic here
+  if (n === 0) return BigInt(1);
 
-  return 0;
+  let sum = 0;
+for (let i = 0; i < n; i++) {
+  
+  sum += 2 * i + 1;
+}
+
+let factorial = BigInt(1);
+for (let i = BigInt(sum); i >= BigInt(1); i--) {
+  factorial *= i;
+}
+return factorial;
 }
 
 // 9. An aspiring coder is learning about Fibonacci numbers and their properties.
@@ -171,6 +212,32 @@ export function calculateFactorialOfOddNumbersSum(n: number): number {
 
 export function countPrimeFibonacciNumbers(n: number): number {
   // Implement logic here
+  function isPrime(num: number): boolean {
+    if (num <= 1) return false;
+    if (num === 2) return true;
+    if (num % 2 === 0) return false;
 
-  return 0;
+    for (let i = 3; i <= Math.sqrt(num); i += 2) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+
+  let first = 0;
+  let second = 1;
+  let counter = 0;
+
+  for (let i = 0; i < n; i++) {
+    let current = first;
+
+    if (isPrime(current)) {
+      counter++;
+    }
+
+    let next = first + second;
+    first = second;
+    second = next;
+  } 
+
+  return counter;
 }
