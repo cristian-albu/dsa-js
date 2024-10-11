@@ -44,4 +44,20 @@ describe("Arrays", () => {
         expect(countWordsInStories(["You don't stop when you're tired", "You stop when you're done"])).toEqual([6, 5]);
     })
 
+    test("absoluteDifference01", () => {
+        expect(absoluteDifferenceEvenOddCount([1, 2, 3, 4])).toEqual(0);
+    })
+
+    test("absoluteDifference02", () => {
+        expect(absoluteDifferenceEvenOddCount([5, 8, 7, 1, 25])).toEqual(3);
+    })
+
+
+    test("replacePrime1", () => {
+        expect(replaceLastPrimeWithZero([4, 6, 5, 8, 11])).toEqual([4, 6, 5, 8, 0])
+    });
+    
+    test("replacePrime2", () => {
+        expect(replaceLastPrimeWithZero([2, 4, 7, 9, 13, 14])).toEqual([2, 4, 7, 9, 0, 14])
+    });
 })

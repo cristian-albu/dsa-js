@@ -83,7 +83,19 @@ export function parseNumbers(stringArray: string[]): number[] {
   // since there are two even numbers (2, 4) and two odd numbers (1, 3).
   export function absoluteDifferenceEvenOddCount(numbers: number[]): number {
     // Your code here
-    return 0;
+    let evenCounter = 0;
+    let oddCounter = 0;
+
+    for (let i = 0; i < numbers.length; i++) {
+      let digit = numbers[i];
+      if (digit % 2 === 0) {
+        evenCounter++;
+      } else {
+        oddCounter++;
+      }
+    }
+
+    return Math.abs(evenCounter - oddCounter);
   }
   
   // In a land of natural numbers, you are given an array containing n natural numbers.
@@ -93,7 +105,28 @@ export function parseNumbers(stringArray: string[]): number[] {
   // [4, 6, 5, 8, 0], since 11 is the last prime number.
   export function replaceLastPrimeWithZero(numbers: number[]): number[] {
     // Your code here
-    return []
+      let result: any = [];
+
+      function isPrime(num: number): boolean {
+        if (num <= 1) return false; 
+        if (num === 2) return true;  
+        if (num % 2 === 0) return false; 
+      
+        
+        for (let i = 3; i * i <= num; i += 2) {
+          if (num % i === 0) return false;
+        }
+        return true;
+      }
+
+      for (let i = numbers.length -1; i > 0; i--) {
+        if (isPrime(numbers[i])) {
+          numbers[i] = 0;
+          break;
+        }
+      }
+      result = numbers;
+    return result;
   }
   
   // In a mystical realm of natural numbers, you are given an array containing n natural numbers.
@@ -102,6 +135,8 @@ export function parseNumbers(stringArray: string[]): number[] {
   // since 12 is the only element that is a multiple of the last element, 4.
   export function displayMultiplesOfLastElement(numbers: number[]): number[] {
     // Your code here
+
+    
     return []
   }
   
