@@ -60,4 +60,12 @@ describe("Arrays", () => {
     test("replacePrime2", () => {
         expect(replaceLastPrimeWithZero([2, 4, 7, 9, 13, 14])).toEqual([2, 4, 7, 9, 0, 14])
     });
+
+    test("multiple01", () => {
+        expect(displayMultiplesOfLastElement([3, 5, 20, 4])).toEqual([20]);
+    })
+
+    test("multiple02", () => {
+        expect(displayMultiplesOfLastElement([8, 9, 30, 50, 5])).toEqual([30, 50]);
+    })
 })
