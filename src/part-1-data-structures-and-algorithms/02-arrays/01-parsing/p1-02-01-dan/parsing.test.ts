@@ -68,4 +68,37 @@ describe("Arrays", () => {
     test("multiple02", () => {
         expect(displayMultiplesOfLastElement([8, 9, 30, 50, 5])).toEqual([30, 50]);
     })
+
+    test("MinAndMax01", () => {
+        expect(findMaxAndMin([3, 7, 2, 9, 4])).toEqual({max: 9, min: 2});
+    })
+    
+    test("MinAndMax02", () => {
+        expect(findMaxAndMin([4, 14, 12, 7, 11, 0])).toEqual({max: 14, min: 0});
+    })
+
+    test("elements equal to difference01", () => {
+        expect(countElementsEqualToDifference([1, 6, 3, 9, 8])).toEqual(1);
+    })
+    
+    test("elements equal to difference02", () => {
+        expect(countElementsEqualToDifference([5, 8, 3, 4, 7, 5])).toEqual(2);
+    })
+
+    test("number is mountain 01", () => {
+        expect(isMountainNumber(14696)).toEqual(true);
+    })
+
+    test("number is mountain 02", () => {
+        expect(isMountainNumber(15951)).toEqual(true);
+    })
+
+    test("number is mountain 03", () => {
+        expect(isMountainNumber(1)).toEqual(false);
+    })
+
+    test("number is mountain 04", () => {
+        expect(isMountainNumber(98789)).toEqual(false);
+    })
 })
+

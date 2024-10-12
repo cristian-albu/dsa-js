@@ -135,9 +135,15 @@ export function parseNumbers(stringArray: string[]): number[] {
   // since 12 is the only element that is a multiple of the last element, 4.
   export function displayMultiplesOfLastElement(numbers: number[]): number[] {
     // Your code here
-
+      let last = numbers.length - 1;
+      let result: any = [];
+      for (let i = 0; i < numbers.length - 1; i++) {
+        if (numbers[i] % numbers[last] === 0) {
+          result[result.length] = numbers[i];
+        }
+      }
     
-    return []
+    return result;
   }
   
   // In a vast landscape of numbers, you are given an array containing n elements.
@@ -145,8 +151,23 @@ export function parseNumbers(stringArray: string[]): number[] {
   // For example, given [3, 7, 2, 9, 4], the maximum should be 9 and the minimum should be 2.
   export function findMaxAndMin(numbers: number[]): { max: number; min: number } {
     // Your code here
-    return {max:2,
-      min: 1 }
+    let max = numbers[0];
+    let min = numbers[0];
+    for (let i = 0; i < numbers.length; i++){
+      if (numbers[i] > max) {
+        max = numbers[i];
+      } else if (numbers[i] < min) {
+        min = numbers[i];
+      }
+    }
+
+    let result = {
+      max: max,
+      min: min
+    }
+
+
+    return result;
   }
   
   // In the kingdom of numbers, you are given an array containing n natural numbers.
@@ -156,7 +177,24 @@ export function parseNumbers(stringArray: string[]): number[] {
   // and there is one element (7) that equals this difference.
   export function countElementsEqualToDifference(numbers: number[]): number {
     // Your code here
-    return 0
+    let max = numbers[0];
+    let min = numbers[0];
+    let result = 0;
+    for (let i = 0; i < numbers.length; i++){
+      if (numbers[i] > max) {
+        max = numbers[i];
+      } else if (numbers[i] < min) {
+        min = numbers[i];
+      }
+    }
+    let difference = max - min;
+    for (let i = 0;i < numbers.length; i++) {
+      if (numbers[i] === difference) {
+        result++;
+      }
+    }
+
+    return result;
   }
   
   // In the enchanted mountains of numbers, a number is considered a "mountain"
@@ -166,5 +204,30 @@ export function parseNumbers(stringArray: string[]): number[] {
   // while 12345 is not, as it only increases.
   export function isMountainNumber(number: number): boolean {
     // Your code here
-    return false
+   let digits = [];
+
+ 
+   while (number > 0) {
+    let digit = number % 10;
+    digits[digits.length] = digit;
+    number = Math.floor(number / 10)
+   }
+
+   let n = digits.length;
+
+   let i = n - 1;
+   while (i > 0 && digits[i] < digits[i - 1]) {
+    i--;
+   }
+
+   if (i === 0 || i === n -1) {
+    return false;
+   }
+
+   while (i > 0 && digits[i] > digits[i - 1]) {
+    i--;
+   }
+
+   return i === 0;
+
   }
