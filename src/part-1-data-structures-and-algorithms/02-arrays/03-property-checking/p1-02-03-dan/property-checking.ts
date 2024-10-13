@@ -6,8 +6,12 @@
 // the output should be false, as 1 and 3 are not even.
 export function areAllElementsEven(numbers: number[]): boolean {
   // Your code here
-
-  return false;
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 !== 0) {
+        return false
+    } 
+  }
+ return true;
 }
 
 // In a bustling market of numbers, you are given an array of natural numbers.
@@ -18,7 +22,15 @@ export function areAllElementsEven(numbers: number[]): boolean {
 // the output should be false, as the number 2 appears more than once.
 export function areAllElementsDistinct(numbers: number[]): boolean {
   // Your code here
-  return false;
+  for (let i = 0;i < numbers.length; i++) {
+    let temp = numbers[i];
+    for (let j = temp; j < numbers.length; j++) {
+        if (temp === numbers[j]) {
+            return false
+        }
+    }
+  }
+  return true;
 }
 
 // In a serene land of numbers, you are given an array of natural numbers.
@@ -29,7 +41,10 @@ export function areAllElementsDistinct(numbers: number[]): boolean {
 // the output should be false, as the sequence is not ordered correctly.
 export function isSortedAscending(numbers: number[]): boolean {
   // Your code here
-  return false;
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] >= numbers[i+1]) {return false}
+  }
+  return true;
 }
 
 // In a mystical kingdom of numbers, you are given an array of integers.
@@ -41,7 +56,18 @@ export function isSortedAscending(numbers: number[]): boolean {
 // since the even numbers (4, 2, 6) are not in order.
 export function areEvenNumbersSorted(numbers: number[]): boolean {
   // Your code here
-  return false;
+  let evenNumbers = [];
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] % 2 === 0) {
+            evenNumbers.push(numbers[i])
+        }
+    }
+
+    for (let i = 0; i < evenNumbers.length; i++) {
+        if (evenNumbers[i] >= evenNumbers[i+1]) {return false}
+    }
+
+  return true;
 }
 
 // In a bustling town of numbers, you are given an array of natural numbers.
@@ -53,7 +79,19 @@ export function areEvenNumbersSorted(numbers: number[]): boolean {
 // since all numbers have an even number of digits.
 export function allElementsHaveEvenNumberOfDigits(numbers: number[]): boolean {
   // Your code here
-  return false;
+  let tempItem = 0;  
+  for (let i = 0; i < numbers.length; i++) {
+    let digitCounter = 0;
+    tempItem = numbers[i];
+    while (tempItem > 0) {
+       tempItem = Math.floor(tempItem / 10)
+        digitCounter++;
+    }
+    if (digitCounter % 2 !== 0) {
+        return false;
+    }
+  }
+  return true;
 }
 
 // In a distant valley of numbers, you are given an array of natural numbers.
@@ -65,7 +103,14 @@ export function allElementsHaveEvenNumberOfDigits(numbers: number[]): boolean {
 // because not all numbers are multiples of 4 (the last element).
 export function areAllElementsMultiplesOfLast(numbers: number[]): boolean {
   // Your code here
-  return false;
+let last = numbers.length - 1;
+for (let i = 0; i < numbers.length - 1; i++) {
+  if (numbers[i] % numbers[last] !== 0) {
+    return false;
+  }
+}
+
+  return true;
 }
 
 // In a land of binary numbers, a vector is called "alternating" if, for any two consecutive elements,
@@ -75,7 +120,13 @@ export function areAllElementsMultiplesOfLast(numbers: number[]): boolean {
 // at least one is 0. However, given [1, 1, 0, 1], the output should be false, because the first two elements are both 1.
 export function isAlternatingArray(numbers: number[]): boolean {
   // Your code here
-  return false;
+  for (let i = 0; i < numbers.length - 1; i++) {    
+    
+    if (numbers[i] === numbers[i+1]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 // In a world of mirrored numbers, you are given two arrays of natural numbers, each with n elements.
@@ -87,7 +138,30 @@ export function isAlternatingArray(numbers: number[]): boolean {
 // the output should be false, as the second array contains a different element (4 instead of 3).
 export function areArraysEqual(numbers1: number[], numbers2: number[]): boolean {
   // Your code here
-  return false;
+
+  if (numbers1.length !== numbers2.length) {
+    return false;
+  }
+  for (let i = 0; i < numbers1.length; i++) {
+    numbers1.forEach((a) => {
+      let counterA = 0;
+      let counterB = 0;
+      numbers1.forEach((element) => {
+        if (element === a) {
+          counterA++;
+        }
+      })
+      numbers2.forEach((element) => {
+        if (element === a) {
+          counterB++;
+        }
+      })
+      if (counterA !== counterB) {
+        return false;
+      }
+    })
+  }
+  return true;
 }
 
 // In a mysterious valley of numbers, you are given an array of natural numbers with n elements.
@@ -99,7 +173,12 @@ export function areArraysEqual(numbers1: number[], numbers2: number[]): boolean 
 // However, given [3, 6, 2, 5], the output should be false, as 6 is outside the interval [3, 5].
 export function areElementsInInterval(numbers: number[]): boolean {
   // Your code here
-  return false;
+  for (let i = 1; i < numbers.length - 1; i++) {
+    if (numbers[i] <= numbers[0] || numbers[i] >= numbers[numbers.length - 1]) {
+      return false
+    }
+  }
+  return true;
 }
 
 // In a land of unique digits, you are given an array of natural numbers with n elements.
@@ -111,5 +190,21 @@ export function areElementsInInterval(numbers: number[]): boolean {
 // as 112 has repeated digits (1 appears twice).
 export function allNumbersHaveDistinctDigits(numbers: number[]): boolean {
   // Your code here
-  return false;
+  for (let k = 0; k < numbers.length; k++) {
+    let array = [];
+    while (numbers[k] > 0) {
+      array.push(numbers[k] % 10);
+      numbers[k] = Math.floor(numbers[k] / 10);
+    }
+    for (let i = 0;i < array.length; i++) {
+      let a = array[i];
+      for (let j = i + 1; j < array.length; j++) {
+        if (a === array[j]) {
+          return false
+        }
+      }
+    }
+  }
+
+  return true;
 }
