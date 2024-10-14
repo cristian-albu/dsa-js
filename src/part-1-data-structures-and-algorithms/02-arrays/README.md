@@ -1,5 +1,7 @@
 # Arrays
 
+In each chapter there are 10 exercises.
+
 ## Methodology & rules
 
 1. Read the chapter on arrays from the book

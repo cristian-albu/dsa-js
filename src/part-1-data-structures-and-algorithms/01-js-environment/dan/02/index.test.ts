@@ -81,8 +81,6 @@ describe("second round", () => {
     });
   });
 
-
-  
   // Test for counting even digits
   describe("countEvenDigits", () => {
     test("should return 3 for number 123456", () => {
