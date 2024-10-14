@@ -8,22 +8,21 @@ export function calculateSumOfFirstNPrimes(n: number): number {
   let candidate = 2;
   while (count < n) {
     let isPrime = true;
-    
-    for (let i = 2; i <= Math.sqrt(candidate); i++) {      
+
+    for (let i = 2; i <= Math.sqrt(candidate); i++) {
       if (candidate % i === 0) {
         isPrime = false;
         break;
-      }       
+      }
     }
     if (isPrime) {
       count++;
       sum += candidate;
-    }    
+    }
     candidate++;
-  }   
-  return sum;  
+  }
+  return sum;
 }
-
 
 // 2. Two friends, Alice and Bob, are playing a game where they compare numbers.
 // Each of them has a number, and they want to determine the greatest common divisor
@@ -31,16 +30,16 @@ export function calculateSumOfFirstNPrimes(n: number): number {
 
 export function findGCDOfDigitSums(a: number, b: number): number {
   // Implement logic here
-let alice = a;
-let bob = b;
+  let alice = a;
+  let bob = b;
 
-function findSum (num: number): number {
-  let sum = 0;
-  let number = num;
+  function findSum(num: number): number {
+    let sum = 0;
+    let number = num;
     while (number > 0) {
       let remainder = number % 10;
-      number = Math.floor(number / 10);      
-      sum += remainder;          
+      number = Math.floor(number / 10);
+      sum += remainder;
     }
     return sum;
   }
@@ -48,19 +47,17 @@ function findSum (num: number): number {
   let aliceSum = findSum(alice);
   let bobSum = findSum(bob);
 
-
-  function findGCD (a: number, b: number) {
+  function findGCD(a: number, b: number) {
     let first = a;
-  let second = b;
+    let second = b;
     while (second !== 0) {
-      let temp = second;     
+      let temp = second;
       second = first % second;
       first = temp;
     }
     return first;
   }
- let result = findGCD(aliceSum, bobSum);
-
+  let result = findGCD(aliceSum, bobSum);
 
   return result;
 }
@@ -73,15 +70,15 @@ function findSum (num: number): number {
 export function calculateArrangementsForIngredients(a: number, b: number): number {
   // Implement logic here
 
-let sum = a + b;
+  let sum = a + b;
 
-function factorial(num: number) {
-  let factorial = 1;
-  for (let i = num; i > 0; i--) {
-    factorial *= i;
+  function factorial(num: number) {
+    let factorial = 1;
+    for (let i = num; i > 0; i--) {
+      factorial *= i;
+    }
+    return factorial;
   }
-  return factorial;
-}
 
   return factorial(sum);
 }
@@ -92,28 +89,26 @@ function factorial(num: number) {
 
 export function generateFibonacciAndReverse(n: number): string {
   // Implement logic here
-  function findIt(n: number) {
-    let first = 0;
-    let second = 1;
-    let sum = 0;
-    let result = ``;
-    for (let i = 0; i <= n; i++) {
+
+  let first = 0;
+  let second = 1;
+  let sum = 0;
+  let result = ``;
+  for (let i = 0; i <= n; i++) {
     result += `${first}`;
     if (i !== n) {
-      result += ' ';
+      result += " ";
     }
     sum = first + second;
     first = second;
     second = sum;
-    }
-    let reversed = '';
-    for (let i = result.length - 1; i >= 0; i--) {
-      reversed += result[i];
-    }  
-    return reversed;
+  }
+  let reversed = "";
+  for (let i = result.length - 1; i >= 0; i--) {
+    reversed += result[i];
   }
 
-  return findIt(n);
+  return reversed;
 }
 
 // 5. In a quirky competition, two contestants are required to multiply their scores
@@ -122,33 +117,29 @@ export function generateFibonacciAndReverse(n: number): string {
 
 export function checkIfProductIsPalindrome(a: number, b: number): boolean {
   // Implement logic here
-    let first = a;
-    let second = b;
-    let product = a * b;
-    let temp = 0;
-    let reversed = 0;
-    while (product > 0) {
-      temp = product % 10;
-      reversed = reversed * 10 + temp;
-      product = Math.floor(product / 10);
-    }
+  let first = a;
+  let second = b;
+  let product = a * b;
+  let temp = 0;
+  let reversed = 0;
+  while (product > 0) {
+    temp = product % 10;
+    reversed = reversed * 10 + temp;
+    product = Math.floor(product / 10);
+  }
 
-    if (reversed === (a*b)) {
-      return true;
-    } else {
-      return false;
-    }
+  if (reversed === a * b) {
+    return true;
+  } else {
+    return false;
+  }
 }
-
-
-
 
 // 7. A teacher wants to assess the digit skills of her students.
 // She decides to take a number and count how many of its digits are even
 // and how many are odd. Can you help her with this task?
 
 export function countEvenDigits(num: number): number {
-
   let evenCounter = 0;
   let oddCounter = 0;
 
@@ -161,7 +152,6 @@ export function countEvenDigits(num: number): number {
       oddCounter++;
     }
   }
-  
 
   return evenCounter;
 }
@@ -180,7 +170,6 @@ export function countOddDigits(num: number): number {
       oddCounter++;
     }
   }
-  
 
   return oddCounter;
 }
@@ -194,16 +183,15 @@ export function calculateFactorialOfOddNumbersSum(n: number): BigInt {
   if (n === 0) return BigInt(1);
 
   let sum = 0;
-for (let i = 0; i < n; i++) {
-  
-  sum += 2 * i + 1;
-}
+  for (let i = 0; i < n; i++) {
+    sum += 2 * i + 1;
+  }
 
-let factorial = BigInt(1);
-for (let i = BigInt(sum); i >= BigInt(1); i--) {
-  factorial *= i;
-}
-return factorial;
+  let factorial = BigInt(1);
+  for (let i = BigInt(sum); i >= BigInt(1); i--) {
+    factorial *= i;
+  }
+  return factorial;
 }
 
 // 9. An aspiring coder is learning about Fibonacci numbers and their properties.
@@ -237,7 +225,7 @@ export function countPrimeFibonacciNumbers(n: number): number {
     let next = first + second;
     first = second;
     second = next;
-  } 
+  }
 
   return counter;
 }
