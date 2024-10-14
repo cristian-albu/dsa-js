@@ -71,9 +71,9 @@ export function removeEvenNumbers(numbers: number[]): number[] {
 
 // In a magical land of numbers, you are given an array of integers.
 // Your task is to insert the double of each even number immediately after the even number itself in the array.
-// For example, given [1, 2, 3, 4, 5], the output should be [1, 2, 4, 3, 4, 5],
+// For example, given [1, 2, 3, 4, 5], the output should be [1, 2, 4, 3, 4, 8, 5],
 // since 2 is even and its double (4) is inserted right after it,
-// and similarly for 4 (its double is also 8).
+// and similarly for 4 (its double is 8).
 export function insertDoubleAfterEven(numbers: number[]): number[] {
   // Your code here
 }
