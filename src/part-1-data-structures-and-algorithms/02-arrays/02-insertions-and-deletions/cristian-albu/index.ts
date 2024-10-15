@@ -102,7 +102,7 @@ export function removePrimeNumbers(numbers: number[]): number[] {
     if (numbers[i] !== 2 && (numbers[i] <= 1 || numbers[i] % 2 === 0)) {
       continue;
     } else {
-      for (let j = 3; j <= Math.sqrt(numbers[i]); j++) {
+      for (let j = 3; j <= Math.sqrt(numbers[i]); j += 2) {
         if (numbers[i] % numbers[j] === 0) {
           isPrime = false;
           break;
