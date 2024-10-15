@@ -203,9 +203,10 @@ export function allNumbersHaveDistinctDigits(numbers: number[]): boolean {
   // Your code here
   for (let k = 0; k < numbers.length; k++) {
     let array = [];
-    while (numbers[k] > 0) {
-      array.push(numbers[k] % 10);
-      numbers[k] = Math.floor(numbers[k] / 10);
+    let num = numbers[k];
+    while (num > 0) {
+      array.push(num % 10);
+      num = Math.floor(num / 10);
     }
     for (let i = 0; i < array.length; i++) {
       let a = array[i];
