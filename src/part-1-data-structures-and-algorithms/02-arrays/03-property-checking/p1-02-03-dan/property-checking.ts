@@ -8,10 +8,10 @@ export function areAllElementsEven(numbers: number[]): boolean {
   // Your code here
   for (let i = 0; i < numbers.length; i++) {
     if (numbers[i] % 2 !== 0) {
-        return false
-    } 
+      return false;
+    }
   }
- return true;
+  return true;
 }
 
 // In a bustling market of numbers, you are given an array of natural numbers.
@@ -22,12 +22,12 @@ export function areAllElementsEven(numbers: number[]): boolean {
 // the output should be false, as the number 2 appears more than once.
 export function areAllElementsDistinct(numbers: number[]): boolean {
   // Your code here
-  for (let i = 0;i < numbers.length; i++) {
+  for (let i = 0; i < numbers.length; i++) {
     let temp = numbers[i];
     for (let j = temp; j < numbers.length; j++) {
-        if (temp === numbers[j]) {
-            return false
-        }
+      if (temp === numbers[j]) {
+        return false;
+      }
     }
   }
   return true;
@@ -42,7 +42,9 @@ export function areAllElementsDistinct(numbers: number[]): boolean {
 export function isSortedAscending(numbers: number[]): boolean {
   // Your code here
   for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] >= numbers[i+1]) {return false}
+    if (numbers[i] >= numbers[i + 1]) {
+      return false;
+    }
   }
   return true;
 }
@@ -57,15 +59,17 @@ export function isSortedAscending(numbers: number[]): boolean {
 export function areEvenNumbersSorted(numbers: number[]): boolean {
   // Your code here
   let evenNumbers = [];
-    for (let i = 0; i < numbers.length; i++) {
-        if (numbers[i] % 2 === 0) {
-            evenNumbers.push(numbers[i])
-        }
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) {
+      evenNumbers.push(numbers[i]);
     }
+  }
 
-    for (let i = 0; i < evenNumbers.length; i++) {
-        if (evenNumbers[i] >= evenNumbers[i+1]) {return false}
+  for (let i = 0; i < evenNumbers.length; i++) {
+    if (evenNumbers[i] >= evenNumbers[i + 1]) {
+      return false;
     }
+  }
 
   return true;
 }
@@ -79,16 +83,16 @@ export function areEvenNumbersSorted(numbers: number[]): boolean {
 // since all numbers have an even number of digits.
 export function allElementsHaveEvenNumberOfDigits(numbers: number[]): boolean {
   // Your code here
-  let tempItem = 0;  
+  let tempItem = 0;
   for (let i = 0; i < numbers.length; i++) {
     let digitCounter = 0;
     tempItem = numbers[i];
     while (tempItem > 0) {
-       tempItem = Math.floor(tempItem / 10)
-        digitCounter++;
+      tempItem = Math.floor(tempItem / 10);
+      digitCounter++;
     }
     if (digitCounter % 2 !== 0) {
-        return false;
+      return false;
     }
   }
   return true;
@@ -103,12 +107,12 @@ export function allElementsHaveEvenNumberOfDigits(numbers: number[]): boolean {
 // because not all numbers are multiples of 4 (the last element).
 export function areAllElementsMultiplesOfLast(numbers: number[]): boolean {
   // Your code here
-let last = numbers.length - 1;
-for (let i = 0; i < numbers.length - 1; i++) {
-  if (numbers[i] % numbers[last] !== 0) {
-    return false;
+  let last = numbers.length - 1;
+  for (let i = 0; i < numbers.length - 1; i++) {
+    if (numbers[i] % numbers[last] !== 0) {
+      return false;
+    }
   }
-}
 
   return true;
 }
@@ -120,9 +124,8 @@ for (let i = 0; i < numbers.length - 1; i++) {
 // at least one is 0. However, given [1, 1, 0, 1], the output should be false, because the first two elements are both 1.
 export function isAlternatingArray(numbers: number[]): boolean {
   // Your code here
-  for (let i = 0; i < numbers.length - 1; i++) {    
-    
-    if (numbers[i] === numbers[i+1]) {
+  for (let i = 0; i < numbers.length - 1; i++) {
+    if (numbers[i] === numbers[i + 1]) {
       return false;
     }
   }
@@ -136,7 +139,10 @@ export function isAlternatingArray(numbers: number[]): boolean {
 // For example, given [1, 2, 3] and [3, 2, 1], the output should be true,
 // since both arrays contain the same elements. However, given [1, 2, 3] and [1, 2, 4],
 // the output should be false, as the second array contains a different element (4 instead of 3).
-export function areArraysEqual(numbers1: number[], numbers2: number[]): boolean {
+export function areArraysEqual(
+  numbers1: number[],
+  numbers2: number[]
+): boolean {
   // Your code here
 
   if (numbers1.length !== numbers2.length) {
@@ -150,16 +156,16 @@ export function areArraysEqual(numbers1: number[], numbers2: number[]): boolean 
         if (element === a) {
           counterA++;
         }
-      })
+      });
       numbers2.forEach((element) => {
         if (element === a) {
           counterB++;
         }
-      })
+      });
       if (counterA !== counterB) {
         return false;
       }
-    })
+    });
   }
   return true;
 }
@@ -173,9 +179,14 @@ export function areArraysEqual(numbers1: number[], numbers2: number[]): boolean 
 // However, given [3, 6, 2, 5], the output should be false, as 6 is outside the interval [3, 5].
 export function areElementsInInterval(numbers: number[]): boolean {
   // Your code here
+  const first = numbers[0];
+  const last = numbers[numbers.length - 1];
   for (let i = 1; i < numbers.length - 1; i++) {
-    if (numbers[i] <= numbers[0] || numbers[i] >= numbers[numbers.length - 1]) {
-      return false
+    if (
+      numbers[i] <= Math.min(first, last) ||
+      numbers[i] >= Math.max(first, last)
+    ) {
+      return false;
     }
   }
   return true;
@@ -196,11 +207,11 @@ export function allNumbersHaveDistinctDigits(numbers: number[]): boolean {
       array.push(numbers[k] % 10);
       numbers[k] = Math.floor(numbers[k] / 10);
     }
-    for (let i = 0;i < array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
       let a = array[i];
       for (let j = i + 1; j < array.length; j++) {
         if (a === array[j]) {
-          return false
+          return false;
         }
       }
     }
