@@ -205,6 +205,5 @@ export function allNumbersHaveDistinctDigits(numbers: number[]): boolean {
       }
     }
   }
-
   return true;
 }

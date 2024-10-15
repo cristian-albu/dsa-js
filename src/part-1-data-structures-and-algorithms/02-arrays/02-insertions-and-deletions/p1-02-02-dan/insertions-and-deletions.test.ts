@@ -21,15 +21,15 @@ describe("Insertions and Deletions", () => {
     })
 
     test("popExample01", () => {
-        expect(popExample([2, 4, 5, 7])).toEqual({modifiedArray: [2, 4, 5], removedNumber: 7})
+        expect(popExample([2, 4, 5, 7])).toStrictEqual({modifiedArray: [2, 4, 5], removedNumber: 7})
     })
 
     test("popExample02", () => {
-        expect(popExample([1, 3, 6, 9])).toEqual({modifiedArray: [1, 3, 6], removedNumber: 9})
+        expect(popExample([1, 3, 6, 9])).toStrictEqual({modifiedArray: [1, 3, 6], removedNumber: 9})
     })
 
     test("shiftExample", () => {
-        expect(shiftExample([2, 4, 6, 3])).toEqual({modifiedArray: [4, 6, 3], removedNumber: 2})
+        expect(shiftExample([2, 4, 6, 3])).toStrictEqual({modifiedArray: [4, 6, 3], removedNumber: 2})
     })
 
     test("unshiftExample", () => {
@@ -41,11 +41,12 @@ describe("Insertions and Deletions", () => {
     })
 
     test("removeFromIndex", () => {
-        expect(removeFromIndex([3, 4, 6, 7], 2)).toEqual({modifiedArray: [3, 4, 7], removedNumber: 6})
+        expect(removeFromIndex([3, 4, 6, 7], 2)).toStrictEqual({modifiedArray: [3, 4, 7], removedNumber: 6})
     })
 
     test("removePrimeNumbers", () => {
         expect(removePrimeNumbers([1, 2, 3, 4, 5, 6])).toEqual([1, 4, 6])
+        expect(removePrimeNumbers([1, 3, 4, 5, 6])).toEqual([1, 4, 6])
     })
 
     test("removeEvenNumbers", () => {
