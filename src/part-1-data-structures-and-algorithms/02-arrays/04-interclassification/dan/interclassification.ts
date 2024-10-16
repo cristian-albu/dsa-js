@@ -5,7 +5,12 @@
 // For example, given a = [1, 3, 5] and b = [2, 4, 6], the output should be c = [1, 2, 3, 4, 5, 6].
 export function mergeSortedArrays(a: number[], b: number[]): number[] {
   // Your code here
-  return [];
+  let newArray = [];
+  for (let i = 0; i < Math.max(a.length, b.length); i++) {
+    newArray.push(a[i]);
+    newArray.push(b[i]);
+  }
+  return newArray;
 }
 
 // In a realm of distinct numbers, you are given two arrays, a and b, containing natural numbers.
@@ -15,6 +20,12 @@ export function mergeSortedArrays(a: number[], b: number[]): number[] {
 // For example, given a = [1, 2, 3] and b = [2, 4, 5], the output should be [1, 2, 3, 4, 5].
 export function displayUniqueValues(a: number[], b: number[]): number[] {
   // Your code here
+  let newArray = [];
+  for (let i = 0; i < Math.max(a.length, b.length); i++) {
+    newArray.push(a[i]);
+    newArray.push(b[i]);
+  }
+
   return [];
 }
 
