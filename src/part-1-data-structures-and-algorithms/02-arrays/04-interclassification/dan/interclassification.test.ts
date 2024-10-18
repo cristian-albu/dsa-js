@@ -35,31 +35,30 @@ describe("Interclassification", () => {
       union: [1, 2, 3, 4],
       intersection: [2, 3],
     });
+  });
+  test("displayUniqueMultiples", () => {
+    expect(displayUniqueMultiples(2, [2, 4, 6, 8], [1, 2, 3, 4])).toEqual([
+      6, 8,
+    ]);
+  });
 
-    test("displayUniqueMultiples", () => {
-      expect(displayUniqueMultiples(2, [2, 4, 6, 8], [1, 2, 3, 4])).toEqual([
-        6, 8,
-      ]);
-    });
+  test("displayElementsInAOnly", () => {
+    expect(displayElementsInAOnly([1, 2, 3, 4], [3, 4, 5])).toEqual([1, 2]);
+  });
 
-    test("displayElementsInAOnly", () => {
-      expect(displayElementsInAOnly([1, 2, 3, 4], [3, 4, 5])).toEqual([1, 2]);
-    });
+  test("countCommonElements", () => {
+    expect(countCommonElements([1, 2, 3, 4], [3, 4, 5])).toEqual([3, 4]);
+  });
 
-    test("countCommonElements", () => {
-      expect(countCommonElements([1, 2, 3, 4], [3, 4, 5])).toEqual([3, 4]);
-    });
+  test("displayCommonElementsFromThree", () => {
+    expect(
+      displayCommonElementsFromThree([1, 2, 3, 4], [2, 3, 5], [3, 6, 2])
+    ).toEqual([2, 3]);
+  });
 
-    test("displayCommonElementsFromThree", () => {
-      expect(
-        displayCommonElementsFromThree([1, 2, 3, 4], [2, 3, 5], [3, 6, 2])
-      ).toEqual([2, 3]);
-    });
-
-    test("mergeAndFilterArrays", () => {
-      expect(mergeAndFilterArrays([1, 2, 3, 4], [5, 6, 7, 8])).toEqual([
-        2, 4, 5, 6, 7, 8,
-      ]);
-    });
+  test("mergeAndFilterArrays", () => {
+    expect(mergeAndFilterArrays([1, 2, 3, 4], [5, 6, 7, 8])).toEqual([
+      2, 4, 5, 6, 7, 8,
+    ]);
   });
 });

@@ -20,13 +20,34 @@ export function mergeSortedArrays(a: number[], b: number[]): number[] {
 // For example, given a = [1, 2, 3] and b = [2, 4, 5], the output should be [1, 2, 3, 4, 5].
 export function displayUniqueValues(a: number[], b: number[]): number[] {
   // Your code here
-  let newArray = [];
-  for (let i = 0; i < Math.max(a.length, b.length); i++) {
-    newArray.push(a[i]);
-    newArray.push(b[i]);
+  let newArray: number[] = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < a.length && j < b.length) {
+    if (a[i] < b[j]) {
+      newArray.push(a[i]);
+      i++;
+    } else if (b[j] < a[i]) {
+      newArray.push(b[j]);
+      j++;
+    } else {
+      newArray.push(a[i]);
+      i++;
+      j++;
+    }
   }
 
-  return [];
+  while (i < a.length) {
+    newArray.push(a[i]);
+    i++;
+  }
+
+  while (j < b.length) {
+    newArray.push(b[j]);
+    j++;
+  }
+  return newArray;
 }
 
 // In a land of unique numbers, you are given two arrays, a and b, containing natural numbers.
@@ -36,7 +57,15 @@ export function displayUniqueValues(a: number[], b: number[]): number[] {
 // For example, given a = [1, 2, 3, 4] and b = [2, 3, 5, 6], the output should be [2, 3].
 export function displayCommonValues(a: number[], b: number[]): number[] {
   // Your code here
-  return [];
+  let newArray: number[] = [];
+  for (let i = 0; i < a.length; i++) {
+    for (let j = 0; j < b.length; j++) {
+      if (a[i] === b[j]) {
+        newArray.push(a[i]);
+      }
+    }
+  }
+  return newArray;
 }
 
 // In a world of numbers, you are given two arrays containing natural numbers.
@@ -46,7 +75,26 @@ export function displayCommonValues(a: number[], b: number[]): number[] {
 // the output should be [2, 4, 6, 8, 10].
 export function displayEvenValues(a: number[], b: number[]): number[] {
   // Your code here
-  return [];
+  let newArray: number[] = [];
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] % 2 === 0) {
+      newArray.push(a[i]);
+    }
+  }
+  for (let j = 0; j < b.length; j++) {
+    if (b[j] % 2 === 0) {
+      newArray.push(b[j]);
+    }
+  }
+  for (let k = 0; k < newArray.length; k++) {
+    if (newArray[k] > newArray[k + 1]) {
+      let temp = newArray[k];
+      newArray[k] = newArray[k + 1];
+      newArray[k + 1] = temp;
+    }
+  }
+
+  return newArray;
 }
 
 // In a magical realm of numbers, you are given two sets of natural numbers.
@@ -60,7 +108,50 @@ export function displayUnionAndIntersection(
   setB: number[]
 ): { union: number[]; intersection: number[] } {
   // Your code here
-  return { union: [], intersection: [] };
+
+  let union: number[] = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < setA.length && j < setB.length) {
+    if (setA[i] < setB[j]) {
+      union.push(setA[i]);
+      i++;
+    } else if (setB[j] < setA[i]) {
+      union.push(setB[j]);
+      j++;
+    } else {
+      union.push(setA[i]);
+      i++;
+      j++;
+    }
+  }
+
+  while (i < setA.length) {
+    union.push(setA[i]);
+    i++;
+  }
+
+  while (j < setB.length) {
+    union.push(setB[j]);
+    j++;
+  }
+
+  let intersection: number[] = [];
+  for (let i = 0; i < setA.length; i++) {
+    for (let j = 0; j < setB.length; j++) {
+      if (setA[i] === setB[j]) {
+        intersection.push(setA[i]);
+      }
+    }
+  }
+
+  let newObject = {
+    union: union,
+    intersection: intersection,
+  };
+
+  return newObject;
 }
 
 // In a world of natural numbers, you are given a natural number x and two arrays, a and b,
@@ -75,7 +166,42 @@ export function displayUniqueMultiples(
   b: number[]
 ): number[] {
   // Your code here
-  return [];
+  let newArray: number[] = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < a.length && j < b.length) {
+    if (a[i] < b[j]) {
+      if (a[i] % x === 0) {
+        newArray.push(a[i]);
+      }
+      i++;
+    } else if (b[j] < a[i]) {
+      if (b[j] % x === 0) {
+        newArray.push(b[j]);
+      }
+      j++;
+    } else {
+      i++;
+      j++;
+    }
+  }
+
+  while (i < a.length) {
+    if (a[i] % x === 0) {
+      newArray.push(a[i]);
+    }
+    i++;
+  }
+
+  while (j < b.length) {
+    if (b[j] % x === 0) {
+      newArray.push(b[j]);
+    }
+    j++;
+  }
+
+  return newArray;
 }
 
 // In a world of numbers, you are given two arrays, a and b,
