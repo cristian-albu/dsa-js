@@ -47,7 +47,7 @@ describe("Interclassification", () => {
   });
 
   test("countCommonElements", () => {
-    expect(countCommonElements([1, 2, 3, 4], [3, 4, 5])).toEqual([3, 4]);
+    expect(countCommonElements([1, 2, 3, 4], [3, 4, 5])).toEqual(2);
   });
 
   test("displayCommonElementsFromThree", () => {
@@ -56,9 +56,15 @@ describe("Interclassification", () => {
     ).toEqual([2, 3]);
   });
 
-  test("mergeAndFilterArrays", () => {
+  test("mergeAndFilterArrays01", () => {
     expect(mergeAndFilterArrays([1, 2, 3, 4], [5, 6, 7, 8])).toEqual([
-      2, 4, 5, 6, 7, 8,
+      2, 4, 5, 7,
+    ]);
+  });
+
+  test("mergeAndFilterArrays02", () => {
+    expect(mergeAndFilterArrays([1, 2, 3, 4], [7, 6, 5, 8])).toEqual([
+      2, 4, 5, 7,
     ]);
   });
 });

@@ -211,7 +211,21 @@ export function displayUniqueMultiples(
 // the output should be [1, 2].
 export function displayElementsInAOnly(a: number[], b: number[]): number[] {
   // Your code here
-  return [];
+  let newArray: number[] = [];
+  let temp = false;
+  for (let i = 0; i < a.length; i++) {
+    temp = true;
+    for (let j = 0; j < b.length; j++) {
+      if (a[i] === b[j]) {
+        temp = false;
+        break;
+      }
+    }
+    if (temp) {
+      newArray.push(a[i]);
+    }
+  }
+  return newArray;
 }
 
 // In a kingdom of numbers, you are given two arrays, a and b,
@@ -221,7 +235,15 @@ export function displayElementsInAOnly(a: number[], b: number[]): number[] {
 // the output should be 2 since the common elements are {3, 4}.
 export function countCommonElements(a: number[], b: number[]): number {
   // Your code here
-  return 0;
+  let counter = 0;
+  for (let i = 0; i < a.length; i++) {
+    for (let j = 0; j < b.length; j++) {
+      if (a[i] === b[j]) {
+        counter++;
+      }
+    }
+  }
+  return counter;
 }
 
 // In a land of numbers, you are given three arrays, a, b, and c,
@@ -236,7 +258,17 @@ export function displayCommonElementsFromThree(
   c: number[]
 ): number[] {
   // Your code here
-  return [];
+  let newArray: number[] = [];
+  for (let i = 0; i < a.length; i++) {
+    for (let j = 0; j < b.length; j++) {
+      for (let k = 0; k < c.length; k++) {
+        if (a[i] === b[j] && a[i] === c[k]) {
+          newArray.push(a[i]);
+        }
+      }
+    }
+  }
+  return newArray;
 }
 
 // In a land of numbers, you are given two arrays, a and b,
@@ -252,5 +284,32 @@ export function displayCommonElementsFromThree(
 // the output should be [2, 4, 5, 6, 7, 8].
 export function mergeAndFilterArrays(a: number[], b: number[]): number[] {
   // Your code here
-  return [];
+  let newArray: number[] = [];
+  let temp = false;
+  for (let i = 0; i < a.length; i++) {
+    temp = true;
+    for (let j = 0; j < b.length; j++) {
+      if (a[i] === b[j] || a[i] % 2 !== 0) {
+        temp = false;
+        break;
+      }
+    }
+    if (temp) {
+      newArray.push(a[i]);
+    }
+  }
+  for (let i = 0; i < b.length; i++) {
+    if (b[i] % 2 !== 0) {
+      newArray.push(b[i]);
+    }
+  }
+  let tempN: number = 0;
+  for (let i = 0; i < newArray.length; i++) {
+    if (newArray[i] > newArray[i + 1]) {
+      tempN = newArray[i];
+      newArray[i] = newArray[i + 1];
+      newArray[i + 1] = tempN;
+    }
+  }
+  return newArray;
 }
