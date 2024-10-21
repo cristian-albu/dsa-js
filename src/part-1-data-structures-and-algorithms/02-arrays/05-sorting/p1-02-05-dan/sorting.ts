@@ -4,7 +4,16 @@
 // For example, given [4, 2, 7, 1], the output should be [1, 2, 4, 7].
 export function bubbleSort(numbers: number[]): number[] {
   // Your code here
-  return [];
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = 0; j < numbers.length - i - 1; j++) {
+      if (numbers[j] > numbers[j + 1]) {
+        let temp = numbers[j];
+        numbers[j] = numbers[j + 1];
+        numbers[j + 1] = temp;
+      }
+    }
+  }
+  return numbers;
 }
 
 // In the land of cards, you are given an array of natural numbers.
@@ -15,7 +24,15 @@ export function bubbleSort(numbers: number[]): number[] {
 // For example, given [4, 2, 7, 1], the output should be [1, 2, 4, 7].
 export function insertionSort(numbers: number[]): number[] {
   // Your code here
-  return [];
+  for (let i = 1; i < numbers.length; i++) {
+    let currValue = numbers[i];
+    let j;
+    for (j = i - 1; j >= 0 && numbers[j] > currValue; j--) {
+      numbers[j + 1] = numbers[j];
+    }
+    numbers[j + 1] = currValue;
+  }
+  return numbers;
 }
 
 // In a chaotic world of randomness, you are given an array of natural numbers.
@@ -26,7 +43,40 @@ export function insertionSort(numbers: number[]): number[] {
 // WARNING: This algorithm is purely for fun and is not suitable for real-world use due to its inefficiency.
 export function bogoSort(numbers: number[]): number[] {
   // Your code here
-  return [];
+  const isSorted = (numbers: number[]) => {
+    for (let i = 1; i < numbers.length; i++) {
+      if (numbers[i - 1] > numbers[i]) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const shuffle = (numbers: number[]) => {
+    let count = numbers.length,
+      temp,
+      index;
+
+    while (count > 0) {
+      index = Math.floor(Math.random() * count);
+      count--;
+
+      temp = numbers[count];
+      numbers[count] = numbers[index];
+      numbers[index] = temp;
+    }
+    return numbers;
+  };
+
+  const sort = (numbers: number[]) => {
+    let sorted = false;
+    while (!sorted) {
+      numbers = shuffle(numbers);
+      sorted = isSorted(numbers);
+    }
+    return numbers;
+  };
+  return sort(numbers);
 }
 
 // In a hall of careful selections, you are given an array of natural numbers.
@@ -36,7 +86,20 @@ export function bogoSort(numbers: number[]): number[] {
 // For example, given [4, 2, 7, 1], the output should be [1, 2, 4, 7].
 export function selectionSort(numbers: number[]): number[] {
   // Your code here
-  return [];
+  let n = numbers.length;
+  for (let i = 0; i < n - 1; i++) {
+    let minIndex = i;
+
+    for (let j = i + 1; j < n; j++) {
+      if (numbers[j] < numbers[minIndex]) {
+        minIndex = j;
+      }
+    }
+    let temp = numbers[i];
+    numbers[i] = numbers[minIndex];
+    numbers[minIndex] = temp;
+  }
+  return numbers;
 }
 
 // In a realm of merging, you are given an array of natural numbers.
@@ -44,9 +107,54 @@ export function selectionSort(numbers: number[]): number[] {
 // Merge Sort works by dividing the array into two halves, recursively sorting them,
 // and then merging the sorted halves into a single sorted array.
 // For example, given [4, 2, 7, 1], the output should be [1, 2, 4, 7].
-export function mergeSort(numbers: number[]): number[] {
-  // Your code here
-  return [];
+export function mergeSort(arr: number[]) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  let middle = Math.floor(arr.length / 2);
+  const left = [];
+  const right = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (i < middle) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+  const sortedLeft: number[] = mergeSort(left);
+  const sortedRight: number[] = mergeSort(right);
+  return mergeArrays(sortedLeft, sortedRight);
+}
+
+export function mergeArrays(a: number[], b: number[]) {
+  let c: number[] = [];
+  let i = 0;
+  let j = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] < b[j]) {
+      c.push(a[i]);
+      i++;
+    } else if (b[j] < a[i]) {
+      c.push(b[j]);
+      j++;
+    } else if (a[i] === b[j]) {
+      c.push(a[i]);
+      c.push(b[j]);
+      i++;
+      j++;
+    }
+  }
+  while (i < a.length) {
+    c.push(a[i]);
+    i++;
+  }
+  while (j < b.length) {
+    c.push(b[j]);
+    j++;
+  }
+  return c;
 }
 
 // In the realm of quickness, you are given an array of natural numbers.
