@@ -164,7 +164,31 @@ export function mergeArrays(a: number[], b: number[]) {
 // For example, given [4, 2, 7, 1], the output should be [1, 2, 4, 7].
 export function quickSort(numbers: number[]): number[] {
   // Your code here
-  return [];
+  function quickSortt(arr: number[], low: number, high: number) {
+    if (low < high) {
+      let pivotIndex = partition(arr, low, high);
+
+      quickSortt(arr, low, pivotIndex - 1);
+      quickSortt(arr, pivotIndex + 1, high);
+    }
+  }
+
+  function partition(arr: number[], low: number, high: number) {
+    let pivot = arr[high];
+    let i = low - 1;
+
+    for (let j = low; j < high; j++) {
+      if (arr[j] < pivot) {
+        i++;
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+    }
+
+    [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+    return i + 1;
+  }
+  quickSortt(numbers, 0, numbers.length - 1);
+  return numbers;
 }
 
 // In a treasure trove of numbers, you are given an array of natural numbers with n elements.
@@ -173,7 +197,23 @@ export function quickSort(numbers: number[]): number[] {
 // For example, given [30, 15, 20, 5, 40], the output should be [40, 30, 20].
 export function displayDescendingDivisibleByTen(numbers: number[]): number[] {
   // Your code here
-  return [];
+  let result = [];
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 10 === 0) {
+      result.push(numbers[i]);
+    }
+
+    for (let i = 0; i < result.length; i++) {
+      for (let j = 0; j < result.length - i - 1; j++) {
+        if (result[j] < result[j + 1]) {
+          let temp: number = result[j];
+          result[j] = result[j + 1];
+          result[j + 1] = temp;
+        }
+      }
+    }
+  }
+  return result;
 }
 
 // In a mystical forest of distinct natural numbers, you are given an array with n elements.
@@ -185,7 +225,36 @@ export function displayDescendingDivisibleByTen(numbers: number[]): number[] {
 // Note that 8 is the maximum value and remains in its position.
 export function sortAroundMaximum(numbers: number[]): number[] {
   // Your code here
-  return [];
+  let maxValue = 0;
+  let maxIndex = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] > maxValue) {
+      maxValue = numbers[i];
+      maxIndex = i;
+    }
+
+    for (let j = 0; j < maxIndex; j++) {
+      for (let k = 0; k < maxIndex - j - 1; k++) {
+        if (numbers[k] > numbers[k + 1]) {
+          let temp: number = numbers[k];
+          numbers[k] = numbers[k + 1];
+          numbers[k + 1] = temp;
+        }
+      }
+    }
+  }
+
+  for (let j = maxIndex; j < numbers.length; j++) {
+    for (let k = maxIndex; k < numbers.length - 1; k++) {
+      if (numbers[k] < numbers[k + 1]) {
+        let temp: number = numbers[k];
+        numbers[k] = numbers[k + 1];
+        numbers[k + 1] = temp;
+      }
+    }
+  }
+
+  return numbers;
 }
 
 // In a land of numbers, you are given an array of natural numbers.
@@ -195,7 +264,17 @@ export function sortAroundMaximum(numbers: number[]): number[] {
 // For example, given [3, 1, 2, 5], the output should be 2.5 (the average of 2 and 3).
 export function calculateMedian(numbers: number[]): number {
   // Your code here
-  return 0;
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = 0; j < numbers.length - i - 1; j++) {
+      if (numbers[j] > numbers[j + 1]) {
+        let temp = numbers[j];
+        numbers[j] = numbers[j + 1];
+        numbers[j + 1] = temp;
+      }
+    }
+  }
+
+  return (numbers[numbers.length / 2 - 1] + numbers[numbers.length / 2]) / 2;
 }
 
 // In a valley of numbers, you are given an array of natural numbers.

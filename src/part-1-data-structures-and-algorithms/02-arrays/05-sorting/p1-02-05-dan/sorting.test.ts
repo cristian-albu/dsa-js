@@ -41,6 +41,9 @@ describe("Sorting", () => {
       40, 30, 20,
     ]);
   });
+  test("displayDescendingDivisibleByTen2", () => {
+    expect(displayDescendingDivisibleByTen([34, 15, 22, 5, 41])).toEqual([]);
+  });
 
   test("sortAroundMaximum", () => {
     expect(sortAroundMaximum([3, 5, 2, 8, 1, 4])).toEqual([2, 3, 5, 8, 4, 1]);
